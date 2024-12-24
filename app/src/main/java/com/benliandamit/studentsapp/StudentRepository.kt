@@ -6,10 +6,10 @@ object StudentRepository {
     fun getStudents(): List<Student> {
         // Return a list of hard-coded students
         return listOf(
-            Student(1, "John Doe"),
-            Student(2, "Jane Smith"),
-            Student(3, "Alice Johnson"),
-            Student(4, "Bob Brown")
+            Student(1, "John Doe", "123-456-7890", "123 Main St"),
+            Student(2, "Jane Smith", "987-654-3210", "456 Elm St"),
+            Student(3, "Alice Johnson", "555-123-4567", "789 Oak St"),
+            Student(4, "Bob Brown", "444-555-6666", "101 Pine St")
         )
     }
 

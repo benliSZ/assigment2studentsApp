@@ -28,10 +28,12 @@ class StudentAdapter(
     inner class StudentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val studentImage: ImageView = itemView.findViewById(R.id.student_image)
         private val studentName: TextView = itemView.findViewById(R.id.student_name)
+        private val studentId: TextView = itemView.findViewById(R.id.student_id)
         private val studentCheckbox: CheckBox = itemView.findViewById(R.id.student_checkbox)
 
         fun bind(student: Student) {
             studentName.text = student.name
+            studentId.text = student.id.toString()
             studentCheckbox.isChecked = student.isChecked
             itemView.setOnClickListener { onItemClick(student) }
             studentCheckbox.setOnCheckedChangeListener { _, isChecked ->
