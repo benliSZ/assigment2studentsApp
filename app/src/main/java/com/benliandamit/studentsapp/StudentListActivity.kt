@@ -20,8 +20,15 @@ class StudentListActivity : AppCompatActivity() {
         adapter = StudentAdapter(StudentRepository.getStudents()) { student ->
             val intent = Intent(this, StudentDetailsActivity::class.java)
             intent.putExtra("student_id", student.id)
-            startActivity(intent)
+            startActivityForResult(intent, 1)
         }
         recyclerView.adapter = adapter
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            adapter.notifyDataSetChanged()
+        }
     }
 }

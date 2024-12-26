@@ -34,11 +34,10 @@ class StudentAdapter(
         fun bind(student: Student) {
             studentName.text = student.name
             studentId.text = student.id.toString()
-            studentCheckbox.isChecked = student.isChecked
+            studentCheckbox.isChecked = StudentRepository.isStudentChecked(student.id)
             itemView.setOnClickListener { onItemClick(student) }
             studentCheckbox.setOnCheckedChangeListener { _, isChecked ->
-                student.isChecked = isChecked
-                StudentRepository.updateStudent(student)
+                StudentRepository.setStudentChecked(student.id, isChecked)
             }
         }
     }
