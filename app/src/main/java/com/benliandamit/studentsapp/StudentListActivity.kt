@@ -2,6 +2,8 @@ package com.benliandamit.studentsapp
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 class StudentListActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: StudentAdapter
+    private lateinit var studentDetailsLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,15 +23,14 @@ class StudentListActivity : AppCompatActivity() {
         adapter = StudentAdapter(StudentRepository.getStudents()) { student ->
             val intent = Intent(this, StudentDetailsActivity::class.java)
             intent.putExtra("student_id", student.id)
-            startActivityForResult(intent, 1)
+            studentDetailsLauncher.launch(intent)
         }
         recyclerView.adapter = adapter
-    }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 1 && resultCode == RESULT_OK) {
-            adapter.notifyDataSetChanged()
+        studentDetailsLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                adapter.notifyDataSetChanged()
+            }
         }
     }
 }
