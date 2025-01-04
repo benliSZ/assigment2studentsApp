@@ -26,7 +26,6 @@ class StudentAdapter(
     override fun getItemCount(): Int = students.size
 
     inner class StudentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val studentImage: ImageView = itemView.findViewById(R.id.student_image)
         private val studentName: TextView = itemView.findViewById(R.id.student_name)
         private val studentId: TextView = itemView.findViewById(R.id.student_id)
         private val studentCheckbox: CheckBox = itemView.findViewById(R.id.student_checkbox)

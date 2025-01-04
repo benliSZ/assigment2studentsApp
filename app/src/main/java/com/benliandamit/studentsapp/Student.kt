@@ -1,7 +1,7 @@
 package com.benliandamit.studentsapp
 
 data class Student(
-    val id: Int,
+    val id: String,
     val name: String,
     val phone: String,
     val address: String,

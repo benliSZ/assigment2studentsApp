@@ -14,10 +14,10 @@ class StudentDetailsActivity : AppCompatActivity() {
         val returnButton: TextView = findViewById(R.id.return_button)
         returnButton.setOnClickListener {
             setResult(RESULT_OK)
-            onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
         }
 
-        val studentId = intent.getIntExtra("student_id", -1)
+        val studentId = intent.getStringExtra("student_id") ?: "-1"
         val student = StudentRepository.getStudents().find { it.id == studentId }
 
         if (student != null) {
