@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class StudentListActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -31,6 +32,12 @@ class StudentListActivity : AppCompatActivity() {
             if (result.resultCode == RESULT_OK) {
                 adapter.notifyDataSetChanged()
             }
+        }
+
+        var addStudentButton = findViewById<FloatingActionButton>(R.id.add_student_button)
+        addStudentButton.setOnClickListener {
+            val intent = Intent(this, AddStudentActivity::class.java)
+            startActivity(intent)
         }
     }
 }
