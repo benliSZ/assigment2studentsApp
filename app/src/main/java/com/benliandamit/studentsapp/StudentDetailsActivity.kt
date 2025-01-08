@@ -27,10 +27,10 @@ class StudentDetailsActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.student_phone).text = "Phone: ${student.phone}"
             findViewById<TextView>(R.id.student_address).text = "Address: ${student.address}"
             val studentChecked: CheckBox = findViewById(R.id.student_checked)
-            studentChecked.isChecked = StudentRepository.isStudentChecked(student.id)
+            studentChecked.isChecked = StudentRepository.isStudentChecked(student.uuid)
 
             studentChecked.setOnCheckedChangeListener { _, isChecked ->
-                StudentRepository.setStudentChecked(student.id, isChecked)
+                StudentRepository.setStudentChecked(student.uuid, isChecked)
             }
         }
     }

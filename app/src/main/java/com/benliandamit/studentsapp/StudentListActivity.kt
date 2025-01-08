@@ -12,7 +12,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class StudentListActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: StudentAdapter
-    private lateinit var studentDetailsLauncher: ActivityResultLauncher<Intent>
+    private lateinit var activityLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +24,11 @@ class StudentListActivity : AppCompatActivity() {
         adapter = StudentAdapter(StudentRepository.getStudents()) { student ->
             val intent = Intent(this, StudentDetailsActivity::class.java)
             intent.putExtra("student_id", student.id)
-            studentDetailsLauncher.launch(intent)
+            activityLauncher.launch(intent)
         }
         recyclerView.adapter = adapter
 
-        studentDetailsLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        activityLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 adapter.notifyDataSetChanged()
             }
@@ -37,7 +37,7 @@ class StudentListActivity : AppCompatActivity() {
         var addStudentButton = findViewById<FloatingActionButton>(R.id.add_student_button)
         addStudentButton.setOnClickListener {
             val intent = Intent(this, AddStudentActivity::class.java)
-            startActivity(intent)
+            activityLauncher.launch(intent)
         }
     }
 }
