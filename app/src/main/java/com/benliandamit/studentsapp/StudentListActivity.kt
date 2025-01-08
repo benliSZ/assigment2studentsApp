@@ -23,7 +23,7 @@ class StudentListActivity : AppCompatActivity() {
 
         adapter = StudentAdapter(StudentRepository.getStudents()) { student ->
             val intent = Intent(this, StudentDetailsActivity::class.java)
-            intent.putExtra("student_id", student.id)
+            intent.putExtra("student_uuid", student.uuid.toString())
             activityLauncher.launch(intent)
         }
         recyclerView.adapter = adapter

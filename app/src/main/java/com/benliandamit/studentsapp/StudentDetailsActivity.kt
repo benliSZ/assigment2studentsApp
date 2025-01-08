@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.CheckBox
+import java.util.UUID
 
 class StudentDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,8 +18,8 @@ class StudentDetailsActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        val studentId = intent.getStringExtra("student_id") ?: "-1"
-        val student = StudentRepository.getStudents().find { it.id == studentId }
+        val studentUUID = intent.getStringExtra("student_uuid") ?: "-1"
+        val student = StudentRepository.getStudents().find { it.uuid.toString() == studentUUID }
 
         if (student != null) {
             findViewById<ImageView>(R.id.student_image).setImageResource(R.drawable.ic_student)
