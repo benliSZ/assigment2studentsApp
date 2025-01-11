@@ -1,4 +1,4 @@
-package com.benliandamit.studentsapp
+package com.benliandamit.studentsapp.screens.studentList
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.benliandamit.studentsapp.screens.addStudent.AddStudentActivity
+import com.benliandamit.studentsapp.R
+import com.benliandamit.studentsapp.screens.studentDetails.StudentDetailsActivity
+import com.benliandamit.studentsapp.dal.StudentRepository
 import com.benliandamit.studentsapp.action.ACTIVITY_ACTION_EXTRA_NAME
 import com.benliandamit.studentsapp.action.ActivityAction
 import com.benliandamit.studentsapp.action.UPDATED_STUDENT_UUID_EXTRA_NAME

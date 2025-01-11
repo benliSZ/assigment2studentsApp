@@ -1,4 +1,4 @@
-package com.benliandamit.studentsapp
+package com.benliandamit.studentsapp.screens.studentList
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.benliandamit.studentsapp.R
+import com.benliandamit.studentsapp.dal.StudentRepository
 import com.benliandamit.studentsapp.model.Student
 
 class StudentAdapter(

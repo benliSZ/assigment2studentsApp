@@ -1,4 +1,4 @@
-package com.benliandamit.studentsapp
+package com.benliandamit.studentsapp.screens.editStudent
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,11 +8,15 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.benliandamit.studentsapp.R
+import com.benliandamit.studentsapp.screens.studentDetails.StudentDetailsActivity
+import com.benliandamit.studentsapp.dal.StudentRepository
 import com.benliandamit.studentsapp.action.ACTIVITY_ACTION_EXTRA_NAME
 import com.benliandamit.studentsapp.action.ActivityAction
 import com.benliandamit.studentsapp.action.STUDENT_UUID_EXTRA_NAME
 import com.benliandamit.studentsapp.action.UPDATED_STUDENT_UUID_EXTRA_NAME
 import com.benliandamit.studentsapp.model.Student
+import com.benliandamit.studentsapp.screens.studentList.StudentListActivity
 import java.util.UUID
 
 class EditStudentActivity : AppCompatActivity() {

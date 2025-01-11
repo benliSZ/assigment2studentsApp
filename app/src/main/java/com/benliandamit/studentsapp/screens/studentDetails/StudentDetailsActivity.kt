@@ -1,18 +1,21 @@
-package com.benliandamit.studentsapp
+package com.benliandamit.studentsapp.screens.studentDetails
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.CheckBox
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import com.benliandamit.studentsapp.R
 import com.benliandamit.studentsapp.action.ACTIVITY_ACTION_EXTRA_NAME
 import com.benliandamit.studentsapp.action.ActivityAction
 import com.benliandamit.studentsapp.action.STUDENT_UUID_EXTRA_NAME
 import com.benliandamit.studentsapp.action.UPDATED_STUDENT_UUID_EXTRA_NAME
+import com.benliandamit.studentsapp.screens.editStudent.EditStudentActivity
+import com.benliandamit.studentsapp.screens.studentList.StudentListActivity
 
 class StudentDetailsActivity : AppCompatActivity() {
     private lateinit var activityLauncher: ActivityResultLauncher<Intent>

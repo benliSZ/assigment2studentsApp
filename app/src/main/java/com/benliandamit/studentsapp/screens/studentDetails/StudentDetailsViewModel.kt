@@ -1,8 +1,9 @@
-package com.benliandamit.studentsapp
+package com.benliandamit.studentsapp.screens.studentDetails
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.benliandamit.studentsapp.dal.StudentRepository
 import com.benliandamit.studentsapp.model.Student
 
 class StudentDetailsViewModel : ViewModel() {

@@ -1,4 +1,4 @@
-package com.benliandamit.studentsapp
+package com.benliandamit.studentsapp.screens.addStudent
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,9 +9,12 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.benliandamit.studentsapp.R
+import com.benliandamit.studentsapp.dal.StudentRepository
 import com.benliandamit.studentsapp.action.ACTIVITY_ACTION_EXTRA_NAME
 import com.benliandamit.studentsapp.action.ActivityAction
 import com.benliandamit.studentsapp.model.Student
+import com.benliandamit.studentsapp.screens.studentList.StudentListActivity
 
 class AddStudentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
