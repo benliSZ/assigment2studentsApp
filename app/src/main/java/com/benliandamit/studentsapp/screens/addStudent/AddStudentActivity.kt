@@ -51,14 +51,18 @@ class AddStudentActivity : AppCompatActivity() {
 
     fun setGoBackClickListener(view: View) {
         view.setOnClickListener {
-            returnToList()
+            returnToList(RESULT_CANCELED)
         }
     }
 
-    private fun returnToList() {
+    private fun returnToList(resultCode: Int = RESULT_OK) {
         val intent = Intent(this, StudentListActivity::class.java)
-        intent.putExtra(ACTIVITY_ACTION_EXTRA_NAME, ActivityAction.ADD_STUDENT.name)
-        setResult(RESULT_OK, intent)
+
+        if (resultCode == RESULT_OK) {
+            intent.putExtra(ACTIVITY_ACTION_EXTRA_NAME, ActivityAction.ADD_STUDENT.name)
+        }
+
+        setResult(resultCode, intent)
         onBackPressedDispatcher.onBackPressed()
     }
 }
