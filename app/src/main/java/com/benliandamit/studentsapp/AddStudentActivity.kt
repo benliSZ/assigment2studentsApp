@@ -1,5 +1,6 @@
 package com.benliandamit.studentsapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -8,8 +9,9 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.benliandamit.studentsapp.action.ACTIVITY_ACTION_EXTRA_NAME
+import com.benliandamit.studentsapp.action.ActivityAction
+import com.benliandamit.studentsapp.model.Student
 
 class AddStudentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,18 +42,20 @@ class AddStudentActivity : AppCompatActivity() {
 
             StudentRepository.addStudent(student)
 
-            goBack()
+            returnToList()
         }
     }
 
     fun setGoBackClickListener(view: View) {
         view.setOnClickListener {
-            goBack()
+            returnToList()
         }
     }
 
-    private fun goBack() {
-        setResult(RESULT_OK)
+    private fun returnToList() {
+        val intent = Intent(this, StudentListActivity::class.java)
+        intent.putExtra(ACTIVITY_ACTION_EXTRA_NAME, ActivityAction.ADD_STUDENT.name)
+        setResult(RESULT_OK, intent)
         onBackPressedDispatcher.onBackPressed()
     }
 }

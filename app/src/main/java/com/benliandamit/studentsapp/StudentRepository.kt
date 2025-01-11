@@ -1,5 +1,6 @@
 package com.benliandamit.studentsapp
 
+import com.benliandamit.studentsapp.model.Student
 import java.util.UUID
 
 object StudentRepository {
@@ -11,6 +12,8 @@ object StudentRepository {
     )
 
     fun getStudents(): List<Student> = students
+
+    fun getStudent(uuid: String): Student? = students.find { it.uuid.toString() == uuid }
 
     fun updateStudent(student: Student) {
         val index = students.indexOfFirst { it.uuid == student.uuid }
@@ -33,5 +36,9 @@ object StudentRepository {
 
     fun addStudent(student: Student) {
         students.add(student)
+    }
+
+    fun deleteStudent(uuid: UUID) {
+        students.removeIf { it.uuid == uuid }
     }
 }

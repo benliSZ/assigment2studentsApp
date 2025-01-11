@@ -1,4 +1,4 @@
-package com.benliandamit.studentsapp
+package com.benliandamit.studentsapp.model
 
 import java.util.UUID
 

@@ -7,6 +7,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.benliandamit.studentsapp.action.ACTIVITY_ACTION_EXTRA_NAME
+import com.benliandamit.studentsapp.action.ActivityAction
+import com.benliandamit.studentsapp.action.UPDATED_STUDENT_UUID_EXTRA_NAME
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class StudentListActivity : AppCompatActivity() {
@@ -28,11 +31,27 @@ class StudentListActivity : AppCompatActivity() {
         }
         recyclerView.adapter = adapter
 
-        activityLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                adapter.notifyDataSetChanged()
+        activityLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == RESULT_OK) {
+                    val data: Intent? = result.data
+                    val activityAction = data?.getStringExtra(ACTIVITY_ACTION_EXTRA_NAME)
+
+                    when (activityAction) {
+                        ActivityAction.ADD_STUDENT.name -> {
+                            adapter.notifyItemInserted(StudentRepository.getStudents().size - 1)
+                        }
+
+                        ActivityAction.UPDATE_STUDENT.name -> {
+                            val studentUUID = data.getStringExtra(UPDATED_STUDENT_UUID_EXTRA_NAME)
+                            val studentIndex = StudentRepository.getStudents()
+                                .indexOfFirst { it.uuid.toString() == studentUUID }
+                            adapter.notifyItemChanged(studentIndex)
+                        }
+                    }
+
+                }
             }
-        }
 
         var addStudentButton = findViewById<FloatingActionButton>(R.id.add_student_button)
         addStudentButton.setOnClickListener {
