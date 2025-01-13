@@ -1,4 +1,7 @@
-package com.benliandamit.studentsapp
+package com.benliandamit.studentsapp.dal
+
+import com.benliandamit.studentsapp.model.Student
+import java.util.UUID
 
 object StudentRepository {
     private val students = mutableListOf(
@@ -10,22 +13,32 @@ object StudentRepository {
 
     fun getStudents(): List<Student> = students
 
+    fun getStudent(uuid: String): Student? = students.find { it.uuid.toString() == uuid }
+
     fun updateStudent(student: Student) {
-        val index = students.indexOfFirst { it.id == student.id }
+        val index = students.indexOfFirst { it.uuid == student.uuid }
         if (index != -1) {
             students[index] = student
         }
     }
 
-    fun setStudentChecked(id: String, isChecked: Boolean) {
-        val student = students.find { it.id == id }
+    fun setStudentChecked(uuid: UUID, isChecked: Boolean) {
+        val student = students.find { it.uuid == uuid }
         if (student != null) {
             student.isChecked = isChecked
             updateStudent(student)
         }
     }
 
-    fun isStudentChecked(id: String): Boolean {
-        return students.find { it.id == id }?.isChecked ?: false
+    fun isStudentChecked(uuid: UUID): Boolean {
+        return students.find { it.uuid == uuid }?.isChecked ?: false
+    }
+
+    fun addStudent(student: Student) {
+        students.add(student)
+    }
+
+    fun deleteStudent(uuid: UUID) {
+        students.removeIf { it.uuid == uuid }
     }
 }

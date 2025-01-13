@@ -13,14 +13,21 @@
         android:theme="@style/Theme.StudentsApp"
         tools:targetApi="31">
         <activity
-            android:name=".StudentListActivity"
+            android:name=".screens.editStudent.EditStudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.addStudent.AddStudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.studentList.StudentListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StudentDetailsActivity" />
+        <activity android:name=".screens.studentDetails.StudentDetailsActivity" />
     </application>
 
 </manifest>
